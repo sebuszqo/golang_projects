@@ -7,6 +7,25 @@ import (
 	"time"
 )
 
+const (
+	getMethod  = "GET"
+	postMethod = "POST"
+)
+
+func helloHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != getMethod {
+		http.Error(w, "method is not supported", http.StatusNotFound)
+		return
+	}
+
+	if r.URL.Path != "/hello" {
+		http.Error(w, "404 not found", http.StatusNotFound)
+		return
+	}
+
+	w.Write([]byte("hello from there\n"))
+}
+
 func loggingMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		log.Printf("%s %s %s", r.Method, r.URL.Path, time.Now())
