@@ -19,8 +19,8 @@ func main() {
 
 	movies := []models.Movie{
 		{
-			Id:    "1",
-			Isbn:  "435553",
+			ID:    "f47ac10b-58cc-0372-8567-0e02b2c3d479",
+			ISBN:  "435553",
 			Title: "Oppenheimer",
 			Director: &models.Director{
 				FirstName: "Christopher",
@@ -28,8 +28,8 @@ func main() {
 			},
 		},
 		{
-			Id:    "2",
-			Isbn:  "342144",
+			ID:    "1e2d5a26-51a0-2d1e-1886-970b9b9bae90",
+			ISBN:  "342144",
 			Title: "Interstellar",
 			Director: &models.Director{
 				FirstName: "Christopher",
