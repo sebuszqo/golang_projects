@@ -42,7 +42,7 @@ func main() {
 	r.HandleFunc("/movies", movieHandler.GetMovies).Methods(http.MethodGet)
 	r.HandleFunc("/movies/{id}", movieHandler.GetMovie).Methods(http.MethodGet)
 	r.HandleFunc("/movies", movieHandler.CreateMovie).Methods(http.MethodPost)
-	r.HandleFunc("/movies/{id}", movieHandler.UpdateMovie).Methods(http.MethodPut)
+	r.HandleFunc("/movies/{id}", movieHandler.UpdateMovie).Methods(http.MethodPatch)
 	r.HandleFunc("/movies/{id}", movieHandler.DeleteMovie).Methods(http.MethodDelete)
 
 	fmt.Printf("Starting server at: %s\n", "localhost:8080")
