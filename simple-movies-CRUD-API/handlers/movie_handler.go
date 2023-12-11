@@ -31,8 +31,10 @@ func (h *MovieHandler) DeleteMovie(w http.ResponseWriter, r *http.Request) {
 			break
 		}
 	}
-	if len(h.Movies) > initialLength {
+	if len(h.Movies) == initialLength {
 		w.WriteHeader(http.StatusNotFound)
+		w.Write([]byte(`{"error": "Movie not found"}`))
+		return
 	}
 	json.NewEncoder(w).Encode(h.Movies)
 
@@ -44,10 +46,12 @@ func (h *MovieHandler) GetMovie(w http.ResponseWriter, r *http.Request) {
 	for _, item := range h.Movies {
 		if item.ID == params["id"] {
 			json.NewEncoder(w).Encode(item)
+			return
 		}
 	}
+
 	w.WriteHeader(http.StatusNotFound)
-	json.NewEncoder(w).Encode("{}")
+	w.Write([]byte(`{"error": "Movie not found"}`))
 }
 
 func (h *MovieHandler) CreateMovie(w http.ResponseWriter, r *http.Request) {
@@ -65,9 +69,9 @@ func (h *MovieHandler) UpdateMovie(w http.ResponseWriter, r *http.Request) {
 	movieID := params["id"]
 
 	var foundMovie *models.Movie
-	for _, movie := range h.Movies {
+	for i, movie := range h.Movies {
 		if movie.ID == movieID {
-			foundMovie = &movie
+			foundMovie = &h.Movies[i]
 			break
 		}
 	}
