@@ -24,9 +24,9 @@ type Book struct {
 	Publication string `json:"publication"`
 }
 
-func (b *Book) CreteBook() *Book {
+func (b *Book) CreateBook() *Book {
 	db.NewRecord(b)
-	db.Create(&b)
+	db.Create(b)
 	return b
 }
 
