@@ -9,8 +9,6 @@ import (
 	"strconv"
 )
 
-var NewBooks models.Book
-
 func IsMethodAllowed(w http.ResponseWriter, r *http.Request, allowedMethod string) bool {
 	if r.Method != allowedMethod {
 		w.WriteHeader(http.StatusMethodNotAllowed)
