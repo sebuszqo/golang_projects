@@ -79,7 +79,7 @@ func GetBookById(w http.ResponseWriter, r *http.Request) {
 
 	newBook, db := models.GetBookById(ID)
 	if db.Error != nil {
-		handleError(w, http.StatusInternalServerError, "Internal Server Error")
+		handleError(w, http.StatusNotFound, "Book not found")
 		return
 	}
 
