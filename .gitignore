@@ -22,4 +22,4 @@ go.work
 .idea
 .DS_Store
 .codesandbox
-.devcontainer
+.devcontainer/devcontainer.json
